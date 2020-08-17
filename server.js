@@ -8,12 +8,18 @@ const todos = [
 
 const server = http.createServer((req, res) => {
   // ALWAYS HAVE CONTENT TYPE IN HEADER
-  res.setHeader("Content-Type", "application/json");
-  res.setHeader("X-Powered-By", "Node.js");
+  // res.statusCode = 404;
+  // res.setHeader("Content-Type", "application/json");
+  // res.setHeader("X-Powered-By", "Node.js");
+  res.writeHead(400, {
+    "Content-Type": "application/json",
+    "X-Powered-By": "Node.js",
+  });
   res.end(
     JSON.stringify({
-      success: true,
-      data: todos,
+      success: false,
+      error: "Wheres yo email brah",
+      data: null,
     })
   );
 });
